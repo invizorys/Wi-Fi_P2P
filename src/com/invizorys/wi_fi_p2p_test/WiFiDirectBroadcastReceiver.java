@@ -3,9 +3,11 @@ package com.invizorys.wi_fi_p2p_test;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.NetworkInfo;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
+import android.net.wifi.p2p.WifiP2pManager.ConnectionInfoListener;
 import android.net.wifi.p2p.WifiP2pManager.PeerListListener;
 import android.util.Log;
 
@@ -47,16 +49,19 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 			}
 			Log.d(MainActivity.TAG, "P2P peers changed");
 
-		} else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION
-				.equals(action)) {
+		} else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
+			NetworkInfo networkState = intent.getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
 
-			// Connection state changed! We should probably do something about
-			// that.
+			if (networkState.isConnected()) {
+				mManager.requestConnectionInfo(mChannel, (ConnectionInfoListener) mActivity);
+			} else {
+				mManager.cancelConnect(mChannel, null);
+			}
 
 		} else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION
 				.equals(action)) {
-			DeviceListFragment fragment = (DeviceListFragment) mActivity
-					.getFragmentManager().findFragmentById(R.id.devicelist);
+//			DeviceListFragment fragment = (DeviceListFragment) mActivity
+//					.getFragmentManager().findFragmentById(R.id.devicelist);
 			mActivity.updateThisDevice((WifiP2pDevice) intent
 					.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_DEVICE));
 		}

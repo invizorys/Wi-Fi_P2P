@@ -7,5 +7,11 @@
     <string name="default_status">My name: Unknown. \nMy Address: Unknown. \nMy status: Unknown.</string>
     <string name="search_pears">Search pears</string>
     <string name="available_devices">available devices</string>
-
+    <string name="create_group">Create Group</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="remove_group">Remove group</string>
+    <string name="choose_file">Choose file</string>
+    <string name="restart_wifi">Restart wifi</string>
+    
 </resources>

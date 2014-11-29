@@ -22,6 +22,32 @@
         android:layout_marginTop="10dp"
         android:text="@string/search_pears" />
 
+    <Button
+        android:id="@+id/create_group_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/create_group" />
+
+    <Button
+        android:id="@+id/remove_group_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/remove_group" />
+
+    <Button
+        android:id="@+id/choose_file_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/choose_file" />
+    
+    <Button android:id="@+id/restart_wifi_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restart_wifi"/>
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
